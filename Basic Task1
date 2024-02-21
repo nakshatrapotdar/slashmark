@@ -1,0 +1,39 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Create a synthetic daily weather dataset
+data = {
+    'Date': pd.date_range(start='2022-01-01', end='2022-01-10'),
+    'Temperature': [25, 28, 23, 30, 22, 27, 26, 29, 24, 31],
+    'Precipitation': [0.1, 0.2, 0, 0, 0.3, 0, 0.1, 0, 0.2, 0.4],
+    'WindSpeed': [10, 12, 8, 15, 7, 14, 11, 13, 9, 16]
+}
+
+df = pd.DataFrame(data)
+
+# Display the dataset
+print("Daily Weather Dataset:")
+print(df)
+
+# Basic statistical analysis
+summary_stats = df.describe()
+print("\nSummary Statistics:")
+print(summary_stats)
+
+# Visualize temperature over time
+plt.figure(figsize=(10, 5))
+plt.plot(df['Date'], df['Temperature'], marker='o', linestyle='-')
+plt.title('Temperature Over Time')
+plt.xlabel('Date')
+plt.ylabel('Temperature (°C)')
+plt.grid(True)
+plt.show()
+
+# Visualize precipitation over time
+plt.figure(figsize=(10, 5))
+plt.bar(df['Date'], df['Precipitation'], color='blue', alpha=0.7)
+plt.title('Daily Precipitation Over Time')
+plt.xlabel('Date')
+plt.ylabel('Precipitation (mm)')
+plt.grid(True)
+plt.show()
